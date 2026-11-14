@@ -1,0 +1,247 @@
+/* ==========================================================================
+   Single-Page Web Portfolio - Minimalist White & Sky Blue
+   ICT Student: Tanakrit Thippawat (Sripatum University)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Prompt:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --font-en: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-th: 'Prompt', 'Plus Jakarta Sans', system-ui, sans-serif;
+  
+  /* Primary Accent: Crisp Sky Blue & Vivid Azure */
+  --primary: #0ea5e9;       /* sky-500 */
+  --primary-hover: #0284c7; /* sky-600 */
+  --primary-light: #e0f2fe; /* sky-100 */
+  --secondary: #38bdf8;     /* sky-400 */
+  --accent-blue: #2563eb;   /* blue-600 */
+  --accent-glow: rgba(14, 165, 233, 0.15);
+  
+  /* Minimalist Clean Light Mode (Default) */
+  --glass-bg: rgba(255, 255, 255, 0.88);
+  --glass-border: rgba(226, 232, 240, 0.9);
+  --glass-border-subtle: rgba(241, 245, 249, 0.95);
+  --glass-shadow: 0 4px 20px -2px rgba(14, 165, 233, 0.06), 0 1px 3px 0 rgba(0, 0, 0, 0.03);
+  --glass-sidebar: rgba(255, 255, 255, 0.92);
+  --glass-modal: rgba(255, 255, 255, 0.98);
+  --surface-subtle: #f8fafc;
+}
+
+.dark {
+  /* Minimalist Dark Mode */
+  --glass-bg: rgba(15, 23, 42, 0.8);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-border-subtle: rgba(255, 255, 255, 0.06);
+  --glass-shadow: 0 12px 30px -6px rgba(0, 0, 0, 0.5), 0 0 16px -2px rgba(14, 165, 233, 0.15);
+  --glass-sidebar: rgba(15, 23, 42, 0.92);
+  --glass-modal: rgba(15, 23, 42, 0.97);
+  --surface-subtle: rgba(30, 41, 59, 0.7);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-th);
+}
+
+body {
+  overflow-x: hidden;
+  background-color: #f8fafc; /* bg-slate-50 */
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* Minimalist Clean Card */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(14, 165, 233, 0.45);
+  box-shadow: 0 14px 28px -6px rgba(14, 165, 233, 0.14), 0 4px 10px -2px rgba(0, 0, 0, 0.03);
+}
+
+.glass-sidebar {
+  background: var(--glass-sidebar);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-right: 1px solid var(--glass-border);
+}
+
+.glass-modal {
+  background: var(--glass-modal);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+}
+
+.glass-pill {
+  background: var(--surface-subtle);
+  border: 1px solid var(--glass-border);
+}
+
+/* Subtle Sky Blue Ambient Glows */
+.ambient-glow-1 {
+  position: fixed;
+  top: -5%;
+  right: -5%;
+  width: 45vw;
+  height: 45vw;
+  max-width: 550px;
+  max-height: 550px;
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.12) 0%, rgba(56, 189, 248, 0.05) 50%, transparent 70%);
+  filter: blur(60px);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  animation: floatOrb 20s ease-in-out infinite alternate;
+}
+
+.ambient-glow-2 {
+  position: fixed;
+  bottom: -10%;
+  left: 10%;
+  width: 40vw;
+  height: 40vw;
+  max-width: 500px;
+  max-height: 500px;
+  background: radial-gradient(circle, rgba(2, 132, 199, 0.09) 0%, rgba(14, 165, 233, 0.04) 50%, transparent 70%);
+  filter: blur(60px);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  animation: floatOrb2 24s ease-in-out infinite alternate;
+}
+
+@keyframes floatOrb {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-25px, 30px) scale(1.05); }
+  100% { transform: translate(15px, -15px) scale(0.96); }
+}
+
+@keyframes floatOrb2 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(30px, -20px) scale(1.04); }
+  100% { transform: translate(-20px, 20px) scale(0.95); }
+}
+
+/* Gradient Text - Sky Blue Minimalist */
+.text-gradient-primary {
+  background: linear-gradient(135deg, #0284c7 0%, #0ea5e9 60%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dark .text-gradient-primary {
+  background: linear-gradient(135deg, #38bdf8 0%, #0ea5e9 50%, #7dd3fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Navigation Active Link */
+.nav-link.active {
+  background: rgba(14, 165, 233, 0.1);
+  color: #0284c7;
+  border-left: 3px solid #0ea5e9;
+  font-weight: 600;
+}
+
+.dark .nav-link.active {
+  background: rgba(14, 165, 233, 0.2);
+  color: #38bdf8;
+  border-left: 3px solid #38bdf8;
+}
+
+/* Clean Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(203, 213, 225, 0.8);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(14, 165, 233, 0.6);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(71, 85, 105, 0.6);
+}
+
+/* Timeline Custom Connector */
+.timeline-dot {
+  position: relative;
+}
+
+.timeline-dot::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(14, 165, 233, 0.22);
+  animation: pulseDot 2.5s infinite;
+}
+
+@keyframes pulseDot {
+  0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.8; }
+  50% { transform: translate(-50%, -50%) scale(1.4); opacity: 0; }
+  100% { transform: translate(-50%, -50%) scale(0.9); opacity: 0; }
+}
+
+/* Toast Notification Animation */
+@keyframes toastSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes toastSlideOut {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-16px) scale(0.96);
+  }
+}
+
+.toast-enter {
+  animation: toastSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.toast-leave {
+  animation: toastSlideOut 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
